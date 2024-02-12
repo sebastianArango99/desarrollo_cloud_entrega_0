@@ -1,0 +1,20 @@
+version: '1'
+services:
+  backend:
+    image: backend
+    ports:
+      - "8080:8080"
+    networks:
+      - myapp-network
+  frontend:
+    image: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - myapp-network
+
+networks:
+  myapp-network:
+    driver: bridge
